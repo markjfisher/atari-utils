@@ -51,7 +51,7 @@ class Atl2Hex : Runnable {
     @CommandLine.Option(names = ["-r", "--rows"], description = ["Row count to output, default: 0 (which means all)"], required = false)
     var rows: Int = 0
 
-    @CommandLine.Option(names = ["-c", "--compress"], description = ["Compress the data before saving. Default: false"], required = false)
+    @CommandLine.Option(names = ["--compress"], description = ["Compress the data before saving. Default: false"], required = false, negatable = true, defaultValue = "false")
     var compress: Boolean = false
 
     override fun run() {

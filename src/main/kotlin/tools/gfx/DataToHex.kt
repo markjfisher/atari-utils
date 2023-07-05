@@ -2,7 +2,9 @@ package tools.gfx
 
 import mu.KotlinLogging
 import picocli.CommandLine
+import tools.compress.Compressor
 import java.io.File
+import kotlin.math.log
 
 private val logger = KotlinLogging.logger {}
 
@@ -25,10 +27,14 @@ class DataToHex : Runnable {
     @CommandLine.Option(names = ["-b", "--bytesPerLine"], description = ["Number of bytes per line, e.g. 40 for wide, 32 for narrow. Default: 40"], required = false)
     var bytesPerLine: Int = 40
 
-    @CommandLine.Option(names = ["-i", "--invertBytes"], description = ["Inverts the bytes to reverse the white/black. Default: true"], required = false)
+    @CommandLine.Option(names = ["--invertBytes"], description = ["Inverts the bytes to reverse the white/black. Default: true"], required = false, negatable = true, defaultValue = "true")
     var invert: Boolean = true
 
+    @CommandLine.Option(names = ["--compress"], description = ["Compress the data before saving. Default: false"], required = false, negatable = true, defaultValue = "false")
+    var compress: Boolean = false
+
     override fun run() {
+        if (invert) logger.info { "Invert bytes enabled." }
         val dataFile = dataFileArg!!
         val output = outputFileArg!!
 
@@ -46,6 +52,8 @@ class DataToHex : Runnable {
         }
 
         logger.info { "Writing raw data to $output" }
-        output.writeBytes(a.toByteArray())
+        val toSave = if (compress) Compressor().compress(a) else a
+        if (compress) logger.info { "Compressed ${a.size} to ${toSave.size}" }
+        output.writeBytes(toSave.toByteArray())
     }
 }
