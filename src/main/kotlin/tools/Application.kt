@@ -4,10 +4,7 @@ import org.slf4j.bridge.SLF4JBridgeHandler
 import picocli.CommandLine
 import picocli.CommandLine.Command
 import picocli.CommandLine.ScopeType
-import tools.gfx.Atl2Hex
-import tools.gfx.CompressLZ
-import tools.gfx.DataToHex
-import tools.gfx.DecompressLZ
+import tools.gfx.*
 import kotlin.system.exitProcess
 
 @Command(
@@ -19,7 +16,8 @@ import kotlin.system.exitProcess
         Atl2Hex::class,
         DataToHex::class,
         CompressLZ::class,
-        DecompressLZ::class
+        DecompressLZ::class,
+        RGBToHex::class
     ]
 )
 open class Application : Runnable {
