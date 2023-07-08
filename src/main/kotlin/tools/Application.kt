@@ -17,7 +17,8 @@ import kotlin.system.exitProcess
         DataToHex::class,
         CompressLZ::class,
         DecompressLZ::class,
-        RGBToHex::class
+        RGBToHex::class,
+        ChrToPNG::class
     ]
 )
 open class Application : Runnable {

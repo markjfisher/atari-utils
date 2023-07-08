@@ -4,7 +4,6 @@ import mu.KotlinLogging
 import picocli.CommandLine
 import tools.compress.Compressor
 import java.io.File
-import kotlin.math.log
 
 private val logger = KotlinLogging.logger {}
 
