@@ -24,14 +24,15 @@ class Compressor {
         var src = 0
         while (compressedData[src].toInt() != 0) {
             if (compressedData[src].toInt() and 0x80 != 0) {
-                var len = (compressedData[src++].toInt() and 0x7F) + 2
-                var off = (decompressedSize - 256 + compressedData[src].toInt()) and 0xff
-                while (len-- > 0) {
+                val len = ((compressedData[src++].toUByte() and 127u) + 2u).toInt()
+                // care must be taken to treat the byte of data as unsigned
+                var off = (decompressedSize - 256 + compressedData[src].toUByte().toInt())
+                repeat(len) {
                     decompressedData[decompressedSize++] = decompressedData[off++]
                 }
             } else {
-                var len = compressedData[src].toInt() and 0x7F
-                while (len-- > 0) {
+                val len = (compressedData[src].toUByte() and 127u).toInt()
+                repeat(len) {
                     decompressedData[decompressedSize++] = compressedData[++src]
                 }
             }
