@@ -20,10 +20,10 @@ private val logger = KotlinLogging.logger {}
     description = ["Convert raw character set to png for editing"]
 )
 class ChrToPNG : Runnable {
-    @CommandLine.Option(names = ["-d", "--data"], description = ["AtariTools 800 asm file"], required = true)
+    @CommandLine.Option(names = ["-d", "--data"], description = ["1024 byte font memory dump"], required = true)
     var dataFileArg: File? = null
 
-    @CommandLine.Option(names = ["-o", "--output"], description = ["HEX output file name (will have section name put in it, e.g. out.hex -> out-grapha.hex)"], required = true)
+    @CommandLine.Option(names = ["-o", "--output"], description = ["PNG output file (Black/White pixels) representing fonts"], required = true)
     var outputFileArg: File? = null
 
     override fun run() {
