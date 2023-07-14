@@ -27,3 +27,9 @@ What about this (from imagemagick):
 ```shell
 convert input.bmp -monochrome -depth 1 -negate GRAY:output.raw
 ```
+
+## Publishing
+
+```shell
+$ ./gradlew publishMavenPublicationToGithubRepository
+```

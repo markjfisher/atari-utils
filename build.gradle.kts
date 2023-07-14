@@ -12,11 +12,15 @@ plugins {
 }
 
 group = "net.fish"
-version = "1.0.2"
+version = "1.0.3"
 description = "Atari CLI utilities used for ETL etc"
 
 repositories {
     mavenCentral()
+}
+
+java {
+    withSourcesJar()
 }
 
 dependencies {
