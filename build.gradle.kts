@@ -1,7 +1,14 @@
+import magik.addSnapshotPublication
+import magik.createGithubPublication
+import magik.github
+
 plugins {
     kotlin("jvm") version "1.8.21"
     application
     id("com.github.johnrengelman.shadow") version "7.0.0"
+    id("elect86.magik") version "0.3.2"
+    `maven-publish`
+    `java-library`
 }
 
 group = "net.fish"
@@ -37,5 +44,20 @@ tasks {
 
     test {
         useJUnitPlatform()
+    }
+}
+
+publishing {
+    publications {
+        createGithubPublication {
+            from(components["java"])
+            addSnapshotPublication()
+        }
+    }
+    repositories {
+        github {
+            name = "github"
+            domain = "markjfisher/mary"
+        }
     }
 }
