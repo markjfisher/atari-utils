@@ -12,7 +12,7 @@ plugins {
 }
 
 group = "net.fish"
-version = "1.0"
+version = "1.0.2"
 description = "Atari CLI utilities used for ETL etc"
 
 repositories {
