@@ -5,6 +5,7 @@ import picocli.CommandLine
 import picocli.CommandLine.Command
 import picocli.CommandLine.ScopeType
 import tools.gfx.*
+import tools.mads.OBXReader
 import kotlin.system.exitProcess
 
 @Command(
@@ -19,7 +20,8 @@ import kotlin.system.exitProcess
         DecompressLZ::class,
         RGBToHex::class,
         ChrToPNG::class,
-        PNGToChr::class
+        PNGToChr::class,
+        OBXReader::class
     ]
 )
 open class Application : Runnable {
