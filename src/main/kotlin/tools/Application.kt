@@ -21,6 +21,7 @@ import kotlin.system.exitProcess
         RGBToHex::class,
         ChrToPNG::class,
         PNGToChr::class,
+        ChrToASM::class,
         OBXReader::class
     ]
 )
